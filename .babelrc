@@ -1,0 +1,23 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "node": "current",
+          "browsers": [
+            "> 1%",
+            "last 2 versions",
+            "not ie <= 6"
+          ]
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime"
+    ]
+  ]
+}

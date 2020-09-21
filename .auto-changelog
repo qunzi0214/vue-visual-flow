@@ -1,0 +1,5 @@
+{
+  "template": "CHANGELOG.template",
+  "unreleased": true,
+  "commitLimit": false
+}

@@ -1,0 +1,17 @@
+# Changelog
+
+{{#each releases}}
+  ## [{{title}}]({{isoDate}})
+
+  {{#commit-list commits heading='### Breaking Change' message='\[break\]'}}
+    - {{subject}} [{{shorthash}}](https://github.com/qunzi0214/vue-visual-flow/commit/{{hash}})
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### New Feature' message='feat' exclude='\[break\]'}}
+    - {{subject}} [{{shorthash}}](https://github.com/qunzi0214/vue-visual-flow/commit/{{hash}})
+  {{/commit-list}}
+
+  {{#commit-list commits heading='### Bug Fix' message='fix: ' exclude='\[break\]'}}
+    - {{subject}} [{{shorthash}}](https://github.com/qunzi0214/vue-visual-flow/commit/{{hash}})
+  {{/commit-list}}
+{{/each}}

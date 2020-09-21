@@ -1,0 +1,90 @@
+{
+  "name": "vue-visual-flow",
+  "version": "0.0.1",
+  "description": "A visual flow editor base on vue and antv/g6",
+  "author": "qunzi0214",
+  "keywords": [
+    "vue",
+    "g6",
+    "vue flow",
+    "visual flow",
+    "editor",
+    "g6 editor",
+    "process editor",
+    "graph editor",
+    "flow editor",
+    "visual editor"
+  ],
+  "bugs": {
+    "url": "https://github.com/qunzi0214/vue-visual-flow/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qunzi0214/vue-visual-flow"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "rollup --config ./build/rollup.cjs.config.js",
+    "build:esm": "rollup --config ./build/rollup.esm.config.js",
+    "changelog": "auto-changelog",
+    "version": "npm run build && auto-changelog -p && git add CHANGELOG.md",
+    "lint": "eslint ./ --ext js,vue --cache --fix",
+    "commit": "git-cz"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.11.2"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.20",
+    "@antv/g6": "^3.7.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "auto-changelog": "^2.2.0",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "rollup": "^2.26.11",
+    "rollup-plugin-vue": "^5.1.9",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
+}
