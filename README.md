@@ -50,7 +50,7 @@ export default {
   name: 'App',
   data() {
     return {
-      // 左侧树形节点列表，兼容 1-3 深度
+      // 左侧树形节点列表，兼容 2-3 深度
       treeList: [
         // 一级分类
         {

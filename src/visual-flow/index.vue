@@ -135,13 +135,15 @@ export default {
     },
     dropHandler(e) {
       e.preventDefault();
-      const pointPos = this.graph.getPointByCanvas(
-        e.offsetX - e.dataTransfer.getData('offsetX') + 100,
-        e.offsetY - e.dataTransfer.getData('offsetY') + 16,
-      );
-      const { x, y } = pointPos;
+
       const nodeData = JSON.parse(e.dataTransfer.getData('nodeData'));
       const { width, height } = JSON.parse(e.dataTransfer.getData('nodeArea'));
+
+      const pointPos = this.graph.getPointByCanvas(
+        e.offsetX - e.dataTransfer.getData('offsetX') + width / 2,
+        e.offsetY - e.dataTransfer.getData('offsetY') + height / 2,
+      );
+      const { x, y } = pointPos;
 
       const inDistance = 1 / (nodeData.inPoints.length + 1);
       const outDistance = 1 / (nodeData.outPoints.length + 1);
@@ -319,6 +321,7 @@ export default {
   box-shadow: 0px 0px 8px 0px rgba(7, 10, 14, 0.05);
 
   .g6-container {
+    position: relative;
     height: 100%;
   }
 }

@@ -50,7 +50,7 @@ export default {
             text: cfg.label,
             fill: textColor,
             cursor: 'move',
-            fontSize: 14,
+            fontSize: 12,
 
             parent: mainId,
             isText: true,

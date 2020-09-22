@@ -1,32 +1,31 @@
 <template>
-  <li>
-    <template v-if="treeNode.children">
-      <div :style="computedPadding">
-        <p
-          :class="{'title': true, 'on': treeNode.showFlag}"
-          @click="treeNode.showFlag = !treeNode.showFlag"
-        >
-          {{ treeNode.label }}
-        </p>
-      </div>
-      <ul v-show="treeNode.showFlag">
-        <RecursionItem
-          v-for="(item, index) in treeNode.children"
-          :key="index"
-          :tree-node="item"
-          :deep="deep + 1"
-        />
-      </ul>
-    </template>
-    <template v-else>
-      <p
-        class="item-button"
-        draggable="true"
-        @dragstart="dragstartHandler($event, treeNode)"
-      >
+  <li v-if="treeNode.children" :class="{ 'one-level': deep === 0, 'other-level': deep !== 0 }">
+    <div class="title-box" @click="treeNode.showFlag = !treeNode.showFlag">
+      <p class="title">
         {{ treeNode.label }}
+        <img
+          :class="{ 'arrow': true, 'close': !treeNode.showFlag }"
+          src="../../assets/arrow.png"
+        >
       </p>
-    </template>
+    </div>
+    <ul v-if="treeNode.children" v-show="treeNode.showFlag" class="child-list">
+      <RecursionItem
+        v-for="(item, index) in treeNode.children"
+        :key="index"
+        :tree-node="item"
+        :deep="deep + 1"
+      />
+    </ul>
+  </li>
+  <li v-else>
+    <p
+      class="item-button"
+      draggable="true"
+      @dragstart="dragstartHandler($event, treeNode)"
+    >
+      {{ treeNode.label }}
+    </p>
   </li>
 </template>
 
@@ -41,12 +40,10 @@ export default {
       type: Number,
     },
   },
-  computed: {
-    computedPadding() {
-      return {
-        'padding-left': `${this.deep * 10}px`,
-      };
-    },
+  created() {
+    if (this.deep >= 3) {
+      throw new Error('树形组件深度超出范围');
+    }
   },
   methods: {
     dragstartHandler(e, nodeData) {
@@ -60,46 +57,73 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title {
-  position: relative;
-  height: 28px;
-  font-size: 12px;
-  line-height: 28px;
-  color: #4A5366;
-  padding-left: 20px;
-  font-weight: bold;
-  cursor: pointer;
+.one-level {
+  margin-bottom: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 8px 0px rgba(7, 10, 14, 0.05);
+  padding: 10px 0 10px 20px;
 
-  &:after{
-    position: absolute;
-    content: ' ';
-    left: 8px;
-    top: 50%;
-    margin-top: -4px;
-    border: 4px solid transparent;
-    border-left-color: #bbb;
-    transition: .2s all linear;
+  &:nth-last-child(1) {
+    margin-bottom: 0;
   }
-  &.on:after {
-    transform: rotate(90deg);;
+  .title {
+    position: relative;
+    display: inline-block;
+    height: 26px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #000;
+    cursor: pointer;
   }
 }
-.item-button {
-  width: 200px;
-  height: 32px;
-  margin: 0 auto 5px;
-  box-sizing: border-box;
-  font-size: 12px;
-  line-height: 32px;
-  text-align: center;
-  color: #4A5366;
+.other-level {
+  .title {
+    position: relative;
+    display: inline-block;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #000;
+  }
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: - 20px;
+  margin-top: -6px;
+  width: 12px;
+  height: 12px;
+  transition: .2s all linear;
+
+  &.close {
+    transform: rotate(-180deg);
+  }
+}
+.child-list {
+  padding-left: 14px;
+}
+.title-box {
+  position: relative;
+  padding-left: 14px;
   cursor: pointer;
+}
+
+.item-button {
+  display: inline-block;
+  height: 24px;
+  padding: 0 12px;
+  font-size: 12px;
+  line-height: 22px;
+  border-radius: 2px;
+  border: 1px solid #fff;
+  color: #666;
+  cursor: pointer;
+  transition: .1s all linear;
 }
 .item-button:hover {
-  background: #FFFFFF;
-  border: 1px solid #E4E5EA;
-  border-left: 3px solid #6ab7ff;
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.05);
-  border-radius: 4px;
+  border-color: #999;
+  color: #000;
 }
 </style>
