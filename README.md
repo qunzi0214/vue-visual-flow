@@ -6,7 +6,7 @@
 
 > issue 已经被修复，请使用 `` antv/g6@3.7.3 `` 及以上版本
 
-
+[个人使用demo](https://github.com/qunzi0214/vue-visual-flow-demo)
 
 # 使用
 
@@ -50,7 +50,7 @@ export default {
   name: 'App',
   data() {
     return {
-      // 左侧树形节点列表，兼容 2-3 深度
+      // 左侧树形节点列表，兼容 2-n 深度
       treeList: [
         // 一级分类
         {
@@ -142,7 +142,3 @@ export default {
 };
 </script>
 ```
-
-
-
-# 参与研发
