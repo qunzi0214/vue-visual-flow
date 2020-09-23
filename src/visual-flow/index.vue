@@ -248,6 +248,20 @@ export default {
       const height = container.offsetHeight;
       const width = container.offsetWidth;
 
+      const tooltip = new G6.Tooltip({
+        offsetX: -20,
+        offsetY: 30,
+        getContent(e) {
+          return `
+            <p style="width: 180px; padding: 8px 16px">${e.item.getModel().tips}</p>
+          `;
+        },
+        shouldBegin(e) {
+          return !!e.item.getModel().tips;
+        },
+        itemTypes: ['node', 'edge'],
+      });
+
       const graphInstance = new G6.Graph({
         container: 'g6-container',
         height,
@@ -259,6 +273,7 @@ export default {
           default: ['drag-node', 'hoverNode', 'selectNode', 'selectEdge', 'drag-canvas'],
           addEdge: ['addEdge'],
         },
+        plugins: [tooltip],
       });
 
       graphInstance.on('afterlayout', () => {

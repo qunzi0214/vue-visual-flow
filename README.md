@@ -66,6 +66,7 @@ export default {
                 {
                   // 基本属性
                   label: '节点1', // 节点显示名称
+                  tips: '在这增加一些节点描述信息~', // 节点悬浮tip
                   inPoints: [ // 入锚点数组
                     {
                       dataType: 'any', // [custom] | any 自定义锚点类型，只有相同类型(或其一为any)的入锚点和出锚点才可以连接
