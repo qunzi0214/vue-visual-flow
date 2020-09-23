@@ -55,31 +55,25 @@ export default {
 .contextmenu-root {
   position: absolute;
   z-index: 9;
-  background-color: #fff;
-  border: 1px solid #e4e5ea;
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
-  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(40, 58, 92, 0.15);
+  border-radius: 4px;
+  border: 1px solid #E4E5EA;
   user-select: none;
+  padding: 5px 0;
 
   li {
-    width: 110px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    color: #4a5366;
-    font-size: 12px;
+    width: 118px;
+    height: 32px;
+    padding: 0 15px;
+    line-height: 32px;
+    color: #202020;
+    font-size: 14px;
     cursor: pointer;
     transition: .1s ease-in all;
-
-    p {
-      width: 100px;
-      height: 100%;
-      margin: 0 auto;
-    }
   }
   li:hover{
-    color: rgb(0, 107, 255);
-    background-color: #f2f7ff;
+    background-color: #EFF0F4;
   }
 }
 </style>
