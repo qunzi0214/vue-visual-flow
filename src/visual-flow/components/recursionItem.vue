@@ -40,11 +40,11 @@ export default {
       type: Number,
     },
   },
-  created() {
-    if (this.deep >= 3) {
-      throw new Error('树形组件深度超出范围');
-    }
-  },
+  // created() {
+  //   if (this.deep >= 3) {
+  //     throw new Error('树形组件深度超出范围');
+  //   }
+  // },
   methods: {
     dragstartHandler(e, nodeData) {
       e.dataTransfer.setData('offsetX', e.offsetX);

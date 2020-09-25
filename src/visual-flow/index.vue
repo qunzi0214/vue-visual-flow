@@ -252,11 +252,19 @@ export default {
         offsetX: -20,
         offsetY: 30,
         getContent(e) {
+          if (e.target.attr('isInPoint') || e.target.attr('isOutPoint')) {
+            return `
+              <p style="width: 180px; padding: 8px 16px">${e.target.attr('labelName')}</p>
+            `;
+          }
           return `
             <p style="width: 180px; padding: 8px 16px">${e.item.getModel().tips}</p>
           `;
         },
         shouldBegin(e) {
+          if (e.target.attr('isInPoint') || e.target.attr('isOutPoint')) {
+            return !!e.target.attr('labelName');
+          }
           return !!e.item.getModel().tips;
         },
         itemTypes: ['node', 'edge'],

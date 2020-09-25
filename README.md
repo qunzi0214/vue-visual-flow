@@ -66,30 +66,21 @@ export default {
                 {
                   // 基本属性
                   label: '节点1', // 节点显示名称
-                  tips: '在这增加一些节点描述信息~', // 节点悬浮tip
+                  tips: '在这增加一些节点描述信息~', // (可选)节点悬浮tip
                   inPoints: [ // 入锚点数组
                     {
-                      dataType: 'any', // [custom] | any 自定义锚点类型，只有相同类型(或其一为any)的入锚点和出锚点才可以连接
-                      labelName: 'xxx',
-
-                      // 自定义属性
-                      id: 'xxx',
+                      dataType: 'type1', // 自定义锚点类型，只有相同类型的入锚点和出锚点才可以连接
+                      labelName: '入锚点类型为type1', // (可选)锚点提示信息
                     },
                     {
-                      dataType: 'any',
-                      labelName: 'xxx',
-
-                      // 自定义属性
-                      id: 'xxx',
+                      dataType: 'type2',
+                      labelName: '入锚点类型为type2',
                     },
                   ],
                   outPoints: [ // 出锚点数组
                     {
-                      dataType: 'any',
-                      labelName: 'xxx',
-
-                      // 自定义属性
-                      id: 'xxx',
+                      dataType: 'type1',
+                      labelName: '出锚点类型为type1',
                     },
                   ],
 
@@ -143,3 +134,6 @@ export default {
 };
 </script>
 ```
+
+### 设计思路以及注意事项
+

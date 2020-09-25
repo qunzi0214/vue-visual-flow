@@ -79,6 +79,7 @@ export default {
               parent: mainId,
               anchorIndex,
               dataType: point.dataType,
+              labelName: point.labelName,
             },
           });
           anchorIndex += 1;
@@ -106,6 +107,7 @@ export default {
               parent: mainId,
               anchorIndex,
               dataType: point.dataType,
+              labelName: point.labelName,
             },
           });
           anchorIndex += 1;
