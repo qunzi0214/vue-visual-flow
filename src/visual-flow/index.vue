@@ -165,6 +165,8 @@ export default {
       });
 
       this.graph.addItem('node', {
+        ...nodeData,
+
         id: `node-${randomStr(10)}`,
         x,
         y,
@@ -172,8 +174,6 @@ export default {
         width,
         anchorPoints,
         type: 'customNode',
-
-        ...nodeData,
       });
     },
 
