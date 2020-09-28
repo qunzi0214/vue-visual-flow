@@ -2,9 +2,23 @@
 
 `` vue-visual-flow `` 是一个基于 `` antv/g6 `` 实现的可视化流程配置 `` Vue `` 组件
 
+项目使用 `` rollup `` 打包，分别提供 `` cjs `` `` esm `` 两种模块化引入方式，大小仅为 100K 左右
+
+### 设计思路
+
+为了尽可能摘除业务逻辑，组件将G6实例、以及当前操作的节点、边实例共享出去，供使用者在外部完成自己的业务逻辑
+
+关于G6 api： [G6](https://g6.antv.vision/zh/docs/api/Graph)
+
+### 部分问题与进度追踪
+
 > ~~目前 ``antv/g6`` 版本更新后会出现自定义图形消失的问题，暂不支持新版 ``antv/g6``，追踪issue：[g6-issue](https://github.com/antvis/G6/issues/2078)~~ 
 
 > issue 已经被修复，请使用 `` antv/g6@3.7.3 `` 及以上版本
+
+> 目前不支持同时设置节点配置 `` tips `` 和锚点配置 `` labelName `` ，会产生无法切换提示信息的问题 [g6-issue](https://github.com/antvis/G6/issues/2153)
+
+### demo
 
 [个人使用demo](https://github.com/qunzi0214/vue-visual-flow-demo)
 
@@ -128,12 +142,19 @@ export default {
   methods: {
     contextmenuEvent(eventName) {
       // eventName 匹配 contextmenuList中同名字段
-      console.log(eventName);
+      if (eventName === 'removeNode') {
+        this.graph.removeItem(this.currentNode);
+      }
+
+      if (eventName === 'removeEdge') {
+        this.graph.removeItem(this.currentEdge);
+      }
+
+      if (eventName === 'unknow') {
+        alert('真的啥都没做呢');
+      }
     },
   },
 };
 </script>
 ```
-
-### 设计思路以及注意事项
-
