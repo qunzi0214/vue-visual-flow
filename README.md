@@ -16,7 +16,9 @@
 
 > issue 已经被修复，请使用 `` antv/g6@3.7.3 `` 及以上版本
 
-- 目前不支持同时设置节点配置 `` tips `` 和锚点配置 `` labelName `` ，会产生无法切换提示信息的问题 [g6-issue](https://github.com/antvis/G6/issues/2153)
+- ~~目前不支持同时设置节点配置 `` tips `` 和锚点配置 `` labelName `` ，会产生无法切换提示信息的问题 [g6-issue](https://github.com/antvis/G6/issues/2153)~~
+
+> issue 已经被修复，请使用 `` antv/g6@3.8.1 `` 及以上版本
 
 ### demo
 
